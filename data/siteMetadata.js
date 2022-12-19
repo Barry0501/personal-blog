@@ -1,27 +1,27 @@
 const siteMetadata = {
-  title: 'Blog | Parth Desai',
-  author: 'Parth Desai',
-  headerTitle: 'Mere Musings',
-  description: 'My personal blog where I share my musings',
-  snippets: 'Reuseable code snippets collected by Parth',
-  language: 'en-us',
+  title: "Tung Duong's Blog",
+  author: 'Tung Duong',
+  headerTitle: 'Tung Duong - My life & coding journey ',
+  description: 'Blog cá nhân của mình nơi mình chia sẻ về coding & my life',
+  snippets: 'Reuseable code snippets collected by Tung Duong',
+  language: 'vi',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://musing.vercel.app',
-  siteRepo: 'https://github.com/pycoder2000/blog',
+  siteUrl: '',
+  siteRepo: '',
   siteLogo: '/static/images/logo.png',
   image: '/static/images/avatar.png',
-  socialBanner: '/static/images/twitter-card.png',
-  email: 'desaiparth2000@gmail.com',
-  github: 'https://github.com/pycoder2000',
-  twitter: 'https://twitter.com/lone_Musk',
-  linkedin: 'https://www.linkedin.com/in/parth-desai-2bb1b0160/',
-  website: 'https://parthdesai.vercel.app',
-  locale: 'en-US',
+  socialBanner: '',
+  email: 'laptung051@gmail.com',
+  github: 'https://github.com/Barry0501',
+  twitter: '',
+  linkedin: 'https://www.linkedin.com/in/tung-duong-b495ba169/',
+  website: '',
+  locale: 'vi-VN',
   analytics: {
     plausibleDataDomain: '', // e.g. tailwind-nextjs-starter-blog.vercel.app
     simpleAnalytics: false, // true or false
     umamiWebsiteId: '', // e.g. 123e4567-e89b-12d3-a456-426614174000
-    googleAnalyticsId: 'G-F6V2QTJ628', // e.g. UA-000000-2 or G-XXXXXXX
+    googleAnalyticsId: '', // e.g. UA-000000-2 or G-XXXXXXX
   },
   newsletter: {
     provider: 'emailOctopus',
@@ -46,7 +46,7 @@ const siteMetadata = {
     },
   },
   socialAccount: {
-    twitter: 'lone_Musk',
+    twitter: '',
   },
 }
 

@@ -196,7 +196,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               Welcome to my home on the internet. This site functions as a blog/portfolio, a place
               to share code and thoughts. Opinions are my own.
             </p>
-            <p>
+            <div>
               I learnt how to build this site from the most awesome people in the community:
               <ul>
                 <li>
@@ -244,7 +244,7 @@ export default function AuthorLayout({ children, frontMatter }) {
                   : Now page, navigation style, animations and much more.
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
         </div>
         <div className="mt-10 md:pl-16">

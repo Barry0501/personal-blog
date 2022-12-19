@@ -1,37 +1,37 @@
-import prisma from 'lib/prisma'
+// import prisma from 'lib/prisma'
 
-export default async function handler(req, res) {
-  try {
-    const slug = req.query.slug.toString()
+// export default async function handler(req, res) {
+//   try {
+//     const slug = req.query.slug.toString()
 
-    if (req.method === 'POST') {
-      const newOrUpdatedViews = await prisma.views.upsert({
-        where: { slug },
-        create: {
-          slug,
-        },
-        update: {
-          count: {
-            increment: 1,
-          },
-        },
-      })
+//     if (req.method === 'POST') {
+//       const newOrUpdatedViews = await prisma.views.upsert({
+//         where: { slug },
+//         create: {
+//           slug,
+//         },
+//         update: {
+//           count: {
+//             increment: 1,
+//           },
+//         },
+//       })
 
-      return res.status(200).json({
-        total: newOrUpdatedViews.count.toString(),
-      })
-    }
+//       return res.status(200).json({
+//         total: newOrUpdatedViews.count.toString(),
+//       })
+//     }
 
-    if (req.method === 'GET') {
-      const views = await prisma.views.findUnique({
-        where: {
-          slug,
-        },
-      })
+//     if (req.method === 'GET') {
+//       const views = await prisma.views.findUnique({
+//         where: {
+//           slug,
+//         },
+//       })
 
-      return res.status(200).json({ total: views?.count?.toString?.() || 0 })
-    }
-  } catch (e) {
-    return res.status(500).json({ message: e.message })
-  }
-}
+//       return res.status(200).json({ total: views?.count?.toString?.() || 0 })
+//     }
+//   } catch (e) {
+//     return res.status(500).json({ message: e.message })
+//   }
+// }

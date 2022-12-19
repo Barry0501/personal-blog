@@ -1,13 +1,13 @@
 ---
-name: Parth Desai
+name: Tung Duong
 avatar: /static/images/avatar.png
-occupation: Data Engineer
-company: Accenture
-email: desaiparth2000@gmail.com
-twitter: https://twitter.com/lone_Musk
-linkedin: https://www.linkedin.com/in/parth-desai-2bb1b0160/
-github: https://github.com/pycoder2000
-text1: I am an India based Data Engineer with a bachelors in Computer Science. I am passionate about Data Science and Automation. I am also fascinated with Mathematics and wish to make a career out of it someday.
+occupation: Mobile Developer
+company: 200Lab
+email: laptung051.com
+# twitter: https://twitter.com/lone_Musk
+linkedin: https://www.linkedin.com/in/tung-duong-b495ba169/
+github: https://github.com/Barry0501
+text1: Hello mình là Tùng Đường. Đây là blog cá nhân của mình mà do mình chưa biết viết mô tả sao nên mình viết câu chào vậy thôi
 text2:
 text3:
 ---
