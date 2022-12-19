@@ -47,7 +47,7 @@ export default function AuthorLayout({ children, frontMatter }) {
             <div className="flex flex-col pt-3">
               <a
                 className="rounded-full border px-8 py-2 text-center text-sm font-light text-gray-700 transition-colors hover:border-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white hover:shadow dark:text-white"
-                href="https://twitter.com/messages/compose?recipient_id=4302974298&text=Hey Parth"
+                href="https://twitter.com/messages/compose?recipient_id=4302974298&text=Hey Tung"
                 data-screen-name="@lone_Musk"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -77,7 +77,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               </RoughNotation>
             </p>
             <br />
-            <p>
+            {/* <p>
               This is what I am doing right{' '}
               <Link
                 href={'/now'}
@@ -85,7 +85,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               >
                 now
               </Link>
-            </p>
+            </p> */}
             <br />
             <p className="sm:block md:hidden lg:hidden">
               I am always looking to learn new things. I am currently working on a few projects

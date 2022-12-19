@@ -5,8 +5,8 @@ import GithubPersonal from '@/components/metrics/GithubPersonal'
 import GitHub from '@/components/metrics/Github'
 import siteMetadata from '@/data/siteMetadata'
 import { PageSEO } from '@/components/SEO'
-import TopTracks from '@/components/TopTracks'
-import NowPlaying from '@/components/NowPlaying'
+// import TopTracks from '@/components/TopTracks'
+// import NowPlaying from '@/components/NowPlaying'
 
 export default function Stats() {
   return (
@@ -30,22 +30,22 @@ export default function Stats() {
             <GithubPersonal />
             <GitHub />
           </div>
-          <div className="grid w-full grid-cols-1 gap-4 py-2  sm:grid-cols-2">
+          {/* <div className="grid w-full grid-cols-1 gap-4 py-2  sm:grid-cols-2">
             <Twitter type="followers" />
             <Twitter type="following" />
           </div>
           <div className="grid w-full grid-cols-1 gap-4 py-2 sm:grid-cols-2">
             <Twitter type="total_tweets" />
             <Analytics />
-          </div>
+          </div> */}
         </div>
-        <h2 className="mb-4 mt-16 text-3xl font-bold tracking-tight text-black dark:text-white">
+        {/* <h2 className="mb-4 mt-16 text-3xl font-bold tracking-tight text-black dark:text-white">
           My <span className="text-green-500">Spotify</span> Top Songs
         </h2>
         <p className="text-md mb-4 text-gray-600 dark:text-gray-400">
           Curious what I'm currently jamming to? Here's my top tracks on Spotify updated daily.
-        </p>
-        <div>
+        </p> */}
+        {/* <div>
           <NowPlaying />
         </div>
         <TopTracks />
@@ -55,14 +55,14 @@ export default function Stats() {
           </p>
           <a
             className="text-md mt-4 rounded-full border px-8 py-2 text-center font-normal text-gray-800 transition-colors hover:border-green-600 hover:bg-green-600 hover:text-white dark:text-gray-200"
-            href="https://twitter.com/messages/compose?recipient_id=4302974298&text=Hey Parth, you should listen to:"
+            href="https://twitter.com/messages/compose?recipient_id=4302974298&text=Hey Tung, you should listen to:"
             data-screen-name="@lone_Musk"
             target="_blank"
             rel="noreferrer noopener"
           >
-            Parth you should listen to...
+            Tung you should listen to...
           </a>
-        </div>
+        </div> */}
       </div>
     </>
   )
