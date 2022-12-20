@@ -42,9 +42,9 @@ export default function AuthorLayout({ children, frontMatter }) {
               blurDataURL="/static/images/SVG-placeholder.png"
             />
             <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{name}</h3>
-            <div className="text-gray-500 dark:text-gray-400">{occupation}</div>
-            <div className="text-gray-500 dark:text-gray-400">{company}</div>
-            <div className="flex flex-col pt-3">
+            {/* <div className="text-gray-500 dark:text-gray-400">{occupation}</div> */}
+            {/* <div className="text-gray-500 dark:text-gray-400">Hiện tại mình đang làm việc tại {company}</div> */}
+            {/* <div className="flex flex-col pt-3">
               <a
                 className="rounded-full border px-8 py-2 text-center text-sm font-light text-gray-700 transition-colors hover:border-[#1DA1F2] hover:bg-[#1DA1F2] hover:text-white hover:shadow dark:text-white"
                 href="https://twitter.com/messages/compose?recipient_id=4302974298&text=Hey Tung"
@@ -55,7 +55,7 @@ export default function AuthorLayout({ children, frontMatter }) {
                 <AiOutlineTwitter className="mr-2 mb-0.5 inline h-5 w-5" />
                 Say Hi!
               </a>
-            </div>
+            </div> */}
           </div>
           <div className="prose max-w-none pt-8 pb-8 dark:prose-dark xl:col-span-2">
             <p>
@@ -67,12 +67,12 @@ export default function AuthorLayout({ children, frontMatter }) {
                 animationDelay={300}
                 animationDuration={3000}
               >
-                {text1} Currently, I am focused on building data pipelines and automating them at{' '}
+                {text1} Hiện tại mình đang là Mentor và quản lý khoá học tại{' '}
                 <Link
-                  href={'https://www.accenture.com/in-en'}
+                  href={'https://200lab.io/'}
                   className="special-underline no-underline hover:text-gray-100 dark:text-gray-100 hover:dark:text-gray-100"
                 >
-                  Accenture
+                  200Lab Education
                 </Link>
               </RoughNotation>
             </p>
@@ -86,57 +86,13 @@ export default function AuthorLayout({ children, frontMatter }) {
                 now
               </Link>
             </p> */}
-            <br />
-            <p className="sm:block md:hidden lg:hidden">
-              I am always looking to learn new things. I am currently working on a few projects
-              related to
-              <span className="font-semibold">
-                {' '}
-                Natural Language Processing and Machine Learning.{' '}
-              </span>
-              At the same time I am{' '}
-              <RoughNotation
-                type="underline"
-                show={true}
-                color="#FBCFE8"
-                animationDelay={1500}
-                animationDuration={3000}
-                multiline={true}
-              >
-                actively on the lookout for remote internships which I can pursue in field of Data
-                Science.
-              </RoughNotation>
-            </p>
-            <p className="hidden md:block">
-              I am always looking to learn new things. I am currently working on a few projects
-              related to{' '}
-              <RoughNotation
-                animationDelay="1000"
-                animationDuration="3000"
-                type="highlight"
-                color="#0ea4e9"
-                strokeWidth="3"
-                show={true}
-              >
-                <span className="text-black dark:text-white">
-                  Natural Language Processing and Machine Learning.{' '}
-                </span>
-              </RoughNotation>
-              At the same time I am{' '}
-              <RoughNotation
-                type="underline"
-                show={true}
-                color="#FBCFE8"
-                animationDelay={1500}
-                animationDuration={3000}
-                multiline={true}
-              >
-                actively on the lookout for remote internships which I can pursue in field of Data
-                Science
-              </RoughNotation>
-            </p>
-            <br />
             <p>
+              Sau nhiều năm làm việc với Flutter, React Native, một chút về iOS & Android để fix các
+              bug liên quan đến native thì hiện tại mình đang lấn sân sang làm Front-end Developer
+              (ReactJS & NextJS).{' '}
+            </p>
+            <br />
+            {/* <p>
               I am a strong advocate for open source and I am always interested in working on new
               projects with new people. Feel free to reach out if you have anything to talk about,
               you can reach me through{' '}
@@ -190,7 +146,7 @@ export default function AuthorLayout({ children, frontMatter }) {
               </Link>{' '}
               you can see what I use on daily basis
             </p>
-            <br />
+            <br /> */}
             <h1>About this site</h1>
             <p>
               Welcome to my home on the internet. This site functions as a blog/portfolio, a place

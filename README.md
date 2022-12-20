@@ -3,7 +3,7 @@
 </div>
 
 <h1 align="center">
-  Personal Blog - <em>Mere Musings</em>
+  Personal Blog - <em>Tung Duong</em>
 </h1>
 
 <p align="center">

@@ -8,14 +8,7 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import Comments from '@/components/comments'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
-import {
-  FacebookShareButton,
-  TwitterShareButton,
-  EmailShareButton,
-  LinkedinShareButton,
-  RedditShareButton,
-  WhatsappShareButton,
-} from 'react-share'
+import { FacebookShareButton, EmailShareButton, LinkedinShareButton } from 'react-share'
 import { SocialIcon } from 'react-social-icons'
 import { HiOutlinePencil, HiOutlineClock, HiOutlineEye } from 'react-icons/hi'
 import { BsCalendarDate } from 'react-icons/bs'
@@ -83,11 +76,10 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       {author.avatar && (
                         <Image
                           src={author.avatar}
-                          width="38px"
-                          height="38px"
+                          width="40px"
+                          height="40px"
                           alt="avatar"
                           className="h-10 w-10 rounded-full"
-                          // placeholder="blur"
                           blurDataURL="/static/images/SVG-placeholder.png"
                         />
                       )}
@@ -128,7 +120,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
               <div className="prose max-w-none pt-10 pb-8 dark:prose-dark">{children}</div>
               <div className="grid place-items-center pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
                 <div className="flex items-center space-x-4">
-                  <TwitterShareButton
+                  {/* <TwitterShareButton
                     url={postUrl}
                     title={title}
                     via={siteMetadata.socialAccount.twitter}
@@ -140,7 +132,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       fgColor="#fff"
                       bgColor="#1da1f2"
                     />
-                  </TwitterShareButton>
+                  </TwitterShareButton> */}
                   <FacebookShareButton
                     url={postUrl}
                     quote={title}
@@ -181,7 +173,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       bgColor="#0072b1"
                     />
                   </LinkedinShareButton>
-                  <RedditShareButton
+                  {/* <RedditShareButton
                     title={title}
                     url={postUrl}
                     className="flex items-center overflow-hidden rounded-full !bg-[#ff4500] hover:scale-110"
@@ -205,7 +197,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                       fgColor="#fff"
                       bgColor="#25D366"
                     />
-                  </WhatsappShareButton>
+                  </WhatsappShareButton> */}
                   <Link
                     href={editUrl(fileName)}
                     className="flex items-center overflow-hidden rounded-full !bg-[#5A6272] hover:scale-110"

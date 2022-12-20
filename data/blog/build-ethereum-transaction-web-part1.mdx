@@ -1,0 +1,203 @@
+---
+title: Xây dựng Ethereum Transaction Web với ReactJS - Part 1
+date: '2022-12-21'
+tags: [reactjs, blockchain]
+draft: false
+summary: Build Ethereum Transaction Web from Zero to Hero
+---
+
+## 1. Giới thiệu
+
+Mô tả, giới thiệu gì đó ở đây.....
+
+Bạn có xem final project của chúng ta tại link: ....
+
+Trong seri này, mình sẽ sử dụng ReactJS, TailwindCSS để dựng website.
+
+Dưới đây là danh sách các công cụ bạn sẽ được khám phá & "đụng đến" trong Tutorial này:
+
+<ul>
+  <li>[MetaMask](https://metamask.io)</li>
+  <li>[Remix Editor](https://metamask.io)</li>
+  <li>[Hardhat](https://metamask.io)</li>
+  <li>[Alchemy](https://metamask.io)</li>
+  <li>[Ethersjs](https://metamask.io)</li>
+  <li>[Faucet](https://metamask.io)</li>
+  <li>[Vite](https://metamask.io)</li>
+</ul>
+
+Ok vậy chúng ta bắt đầu làm thôi.
+
+## 2. Cài đặt MetaMask:
+
+Nếu bạn chưa cài đặt hoặc không biết cách cài đặt MetaMask, bạn có thể tham khảo bài viết [Hướng dẫn cài đặt ví điện tử MetaMask](https://200lab.io/blog/vi-metamask-la-gi/) do chính mình viết trên website 200Lab.
+
+Bạn có thể sử dụng bất kỳ trình duyệt nào MetaMask hỗ trợ (ngoại trừ Safari) để sử dụng, nhưng trong seri này mình sẽ sử dụng trình duyệt Google Chrome để làm việc.
+
+## 3. Khởi tạo Smart Contract:
+
+Mình sẽ sử dụng công cụ đầu tiên đó chính là [Remix Editor](https://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.8.7+commit.e28d00a7.js) để code Smart Contract. Nếu đây là lần đầu tiên bạn code Smart Contract hoặc vọc đến ngôn ngữ Solidity thì đừng lo, nếu bạn đã biết lập trình rồi thì mọi thứ tiếp theo sẽ rất quen thuộc và dễ dàng với bạn.
+
+Đầu tiên, mình sẽ khởi tạo 1 file mới và đặt tên là `Transactions.sol`. Chúng ta sẽ bắt đầu code thôi:
+
+```sol showLineNumbers filename="Transactions.sol"
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity 0.8.0;
+
+contract Transactions {
+    address private owner;
+    uint256 transactionCounts;
+    mapping (address => uint) balanceOf;
+}
+```
+
+Mình sẽ giải thích từng dòng code như sau:
+
+- Dòng 1: Khai báo Software License .
+- Dòng 3: Compiler version của ngôn ngữ Solidity mà bạn mong muốn sử dụng.
+- Dòng 5: Tên contract.
+- Dòng 6: `Owner` - biến dùng để quản lý wallet address.
+- Dòng 8: `transactionCounts` - đếm số lượng transaction đã thực hiện, mình khai báo kiểu uint (unsigned integer) vì nó không thể có giá trị âm.
+- Dòng 10: `balanceOf` - lưu danh sách address của các user đã tương tác với Smart contract.
+
+Tiếp theo, chúng ta sẽ khởi tạo 1 struct để quản lý các thông tin cần thiết để khởi tạo 1 transaction bao gồm:
+
+- `sender` (người gửi).
+- `receiver` (người nhận).
+- `amount` (số lượng).
+- `remark` (nội dung).
+- `timestamp` (thời gian thực hiện giao dịch).
+
+Ngoài ra, mỗi khi có bất kỳ sự kiện transfer nào xảy ra, mình sẽ đặt thêm 1 event tên là `Transfer` để bên ngoài có thể subscribe đến (thường là Backend của dự án) và biết được thông tin giao dịch mới một cách dễ dàng.
+
+Cuối cùng, mình sử dụng biến `transactions` để lưu lại các giao dịch đã thực hiện.
+
+```sol {10-16,18-24,26} showLineNumbers filename="Transactions.sol"
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity 0.8.0;
+
+contract Transactions {
+    address private owner;
+    uint256 transactionCounts;
+    mapping (address => uint) balanceOf;
+
+    event Transfer(
+      address indexed sender,
+      address indexed receiver,
+      uint256 amount,
+      string remark,
+      uint256 timestamp
+    );
+
+    struct TransferStruct {
+        address sender;
+        address receiver;
+        uint256 amount;
+        string remark;
+        uint256 timestamp;
+    }
+
+    TransferStruct[] transactions;
+}
+```
+
+Tiếp theo, mình sẽ tận dụng hàm `constructor` - đây là hàm khởi tạo và chỉ <ins>**chạy duy nhất một lần khi smart contract được thực thi lần đầu tiên**</ins> để gán giá trị cho biến owner. Ngoài ra, mình còn khởi tạo thêm 1 view function return address của owner.
+
+```sol filename="Transactions.sol"
+  constructor() {
+    owner = msg.sender;
+    balanceOf[tx.origin] = msg.sender.balance;
+  }
+
+  function getOwner() public view returns (address) {
+    return owner;
+  }
+```
+
+Tiếp theo, mình sẽ viết những function quan trọng nhất cho smart contract của chúng ta trong tutorial này.
+
+```sol filename="Transactions.sol"
+  function sendMoney(
+    address payable receiver,
+    uint256 amount,
+    string memory remark
+  ) public returns(bool success) {
+
+    require(balanceOf[owner] >= amount, "Insufficient Balance to send money")
+
+    balanceOf[owner] -= amount;
+    balanceOf[receiver] += amount;
+
+    transactionCounts += 1;
+    transactions.push(
+      TransferStruct(
+        owner,
+        receiver,
+        amount,
+        remark,
+        block.timestamp
+        )
+    );
+
+    emit Transfer(msg.sender, receiver, amount, remark, block.timestamp);
+}
+
+  function getBalance(address addr) public view returns(uint) {
+    return balanceOf[addr];
+  }
+
+  function getAllTransactions() public view returns(TransferStruct[] memory) {
+    return transactions;
+  }
+
+  function getTransactionsCount() public view returns(uint256) {
+    return transactionCounts;
+  }
+```
+
+Mình sẽ giải thích từng function ở đoạn code trên nhé:
+
+- `sendMoney`: Chức năng chính của function này là chuyển một khoảng amount ethers từ ví owner sang cho địa chỉ bất kỳ(`receiver`) và `remark` lại transaction đó. Cuối cùng, một khi thực hiện chuyển tiền thành công thì tự động chương trình sẽ emit event Transfer để notify ra bên ngoài.
+- `getBalance`: read balance hiện tại của địa chỉ ví truyền vào.
+- `getAllTransactions`: trả về danh sách các transaction đã thực hiện thành công.
+- `getTransactionsCount`: trả về số lần đã thực hiện transaction thành công.
+
+Ok giờ mình sẽ compile thử Smart Contract của chúng ta thôi.
+
+## 4. Compile & Deploy Smart Contract:
+
+Các bạn thực hiện theo các bước mình có đánh số trên hình. Đầu tiên nhấn vào tab số 3 rồi nhấn vào nút Compile. Nếu Smart Contract compile thành công thì Remix edior tự động hiển thị nút tick xanh lá.
+
+<img
+  className="inline rounded-lg"
+  src="/static/images/Blog/step-compile-smart-contract.png"
+  alt="Compile smart contract"
+/>
+
+**Lưu ý**: nếu có nhiều hơn 2 Smart contract thì các bạn nhớ chọn đúng contract mà mình cần compile nhé!
+
+Tiếp theo mình sẽ Deploy Contract. Tương tự mọi người click chọn Deployment tab và lựa chọn environment mong muốn deploy. Tạm thời mình sẽ deploy lên môi trường JavaScript VM (London) để phục vụ việc testing cho nhanh.
+
+<img
+  className="inline rounded-lg"
+  src="/static/images/Blog/deploy-smart-contract.png"
+  alt="Deploy smart contract"
+/>
+
+Sau khi deploy thành công, Remix sẽ tạo ra một cái khung UI để mình tương tác trực tiếp với contract.
+
+Bây giờ mình sẽ thực hiện transaction đầu tiên nhé! Mình sẽ tạo giao dịch gửi 1 ether từ tài khoản thứ nhất (cũng là deployer, owner của Smart Contract) sang tài khoản thứ hai. Ở khung danh sách Account các bạn select tài khoản số hai và copy address của nó.
+
+Cách thức thực hiện các bạn có thể tham khảo hình bên dưới.
+
+<img
+  className="inline rounded-lg"
+  src="/static/images/Blog/interact-smart-contract.png"
+  alt="Interact smart contract"
+/>
+
+Sau mỗi lần thực hiện giao dịch nếu như ở Terminal thể hiện tick xanh lá nghĩa là giao dịch đó của bạn được thực hiện thành công.
+
+Ok vậy là chúng ta đã hoàn thành xong được phần Smart Contract. Bài viết tiếp theo mình sẽ hướng dẫn các bạn dựng giao diện web và tương tác trực tiếp với Blockchain Testnet nhé!

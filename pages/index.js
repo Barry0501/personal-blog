@@ -19,7 +19,7 @@ export default function Home({ posts }) {
     <>
       <PageSEO title={siteMetadata.title} description={siteMetadata.description} />
       <div>
-        <div className="mb-12 flex flex-col items-center gap-x-12 xl:flex-row">
+        <div className="mb-[60px] flex flex-col items-center gap-x-12 xl:flex-row">
           <div className="pt-6">
             <h1 className="pb-6 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
               Hi 🙌, I'm{' '}
@@ -31,9 +31,9 @@ export default function Home({ posts }) {
               {`Chào mừng bạn đến Blog cá nhân của mình. Đây là nơi mình sẽ chia sẻ về coding & cuộc sống "lowkey" của mình.`}
             </h2>
             <h2 className="prose pt-5 text-lg text-gray-600 dark:text-gray-300">
-              Tính tới thời điểm mình bắt đầu đi làm từ năm 2 đến giờ mình cũng có "của riêng" mình
-              6 năm lập trình Mobile App (React Native & Flutter), "một chút" về Blockchain và bây
-              giờ mình đang trải nghiệm làm Front-end React Developer xem như thế nào.
+              Tính tới thời điểm mình bắt đầu đi làm từ năm 2 đến giờ mình cũng có "của riêng" với 6
+              năm lập trình Mobile App (React Native & Flutter), "một chút" về Blockchain và bây giờ
+              mình đang trải nghiệm làm Front-end React Developer xem như thế nào.
             </h2>
             <h2 className="prose pt-5 text-lg text-gray-600 dark:text-gray-300">
               Mình xây dựng Blog này để "va chạm" sâu sát với NextJS và để note lại những kiến thức
@@ -43,7 +43,7 @@ export default function Home({ posts }) {
           <ListActivities />
         </div>
         <h2 className="flex pb-6 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-3xl md:text-5xl">
-          Latest
+          Bài viết mới nhất
         </h2>
         <hr className="border-gray-200 dark:border-gray-700" />
         <ul>

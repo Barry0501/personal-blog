@@ -6,7 +6,7 @@ const CustomLink = ({ href, children, className, showIcon = true, ...rest }) => 
 
   if (isInternalLink || isAnchorLink) {
     return (
-      <Link href={href}>
+      <Link href={href} legacyBehavior>
         <a className={className} {...rest}>
           {children}
         </a>
