@@ -32,82 +32,61 @@ Trước đó mình có tham khảo nhiều nguồn, nhiều người quen rồi
 
 Ok chúng ta cùng nhau vào việc thôi. Đầu tiên mình sẽ cài đặt môi trường và các công cụ cần thiết để học nha. Đầu tiên là mình [download MySQL](https://dev.mysql.com/downloads/) nhé!
 
+<CenterImageInBlog
+  src="/static/images/Blog/cai-dat-mysql-community-server.png"
+  alt="Cai dat MySQL community server"
+/>
+
 <div className="grid place-items-center">
   <img
     className="inline rounded-lg"
     src="/static/images/Blog/cai-dat-mysql-community-server.png"
     alt="Cai dat MySQL community server"
-    width="100%"
+    width="400"
+    height="400"
   />
 </div>
 
 Sau đó, bạn lựa chọn đúng hệ điều hành, version của hệ điều hành (bước này được trang chủ MySQL làm tự động luôn rồi) đang sử dụng và nhấn Download bản cài phù hợp nhé!
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/select-install-mysql-verson.png"
-    alt="Lua chon ban cai dat MySQL community server"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/select-install-mysql-verson.png"
+  alt="Lua chon ban cai dat MySQL community server"
+/>
 
 Chúng ta sẽ bị chuyển qua màn hình này và đương nhiên, mình sẽ chọn download thôi chứ Login Sign Up gì tầm này 😆
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/skip-authen-mysql.png"
-    alt="Skip authentication MySQL"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/skip-authen-mysql.png"
+  alt="Skip authentication MySQL"
+/>
 
 Sau khi download thành công, mình chạy file cài tới bước này thì dừng hẳn là 2s vì không biết chọn option nào đây, đến khi mình đọc đoạn mô tả thì tất nhiên rồi mình chọn **option 1** rồi nhấn **Next**
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/configure-mysql-server.png"
-    alt="Configure MySQL server"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/configure-mysql-server.png"
+  alt="Configure MySQL server"
+/>
 
 Bước tiếp theo chương trình sẽ kêu chúng ta nhập mật khẩu cho `root user` (root mình nghĩ là mình á, vì máy mình mà :v), nhập mật khẩu và nhấn **Finish** thôi 🤪
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/create-password-for-root-user-mysql.png"
-    alt="Create password for root user MySQL server"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/create-password-for-root-user-mysql.png"
+  alt="Create password for root user MySQL server"
+/>
 
 Tada vậy là quá trình cài đặt MySQL đã hoàn tất. Mình hoàn toàn kiểm tra được chương trình chúng ta cài đặt đã thành công hay chưa bằng cách vào `System Setting` -> Sau đó bạn gõ `mysql`. Nếu như Macbook bạn hiển thị MySQL đang Active thì everything is ok rồi á 👏.
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/check-install-success-mysql.png"
-    alt="Check install MySQL success"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/check-install-success-mysql.png"
+  alt="Check install MySQL success"
+/>
 
 ## 3. "Múa" thử vài câu lệnh MySQL nhé
 
 Trong trường hợp bạn đang ngồi làm việc ở quán cafe, hay văn phòng của bạn có nhiều bạn nữ thì làm gì cho ngầu. So easy mình bật Terminal vào và gõ vài đường quyền chơi. Tuy nhiên, để **tương tác với MySQL trên Terminal** các bạn cần cài đặt PATH cho nó.
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/path-find-zshrc.png"
-    alt="Path to find zshrc file"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog src="/static/images/Blog/path-find-zshrc.png" alt="Path to find zshrc file" />
 
 Máy của mình thì sử dụng file `.zshrc` tuy nhiên nếu bạn dùng file `.bash_profile` thì cũng không thành vấn đề nhé. Bạn có thể mở file đó nhanh bằng cách bật Terminal lên và gõ
 
@@ -121,14 +100,7 @@ Kế tiếp bạn gõ trỏ PATH MySQL vào theo dòng lệnh mình để sẵn 
  export PATH="$PATH:/usr/local/mysql/bin"
 ```
 
-<div className="grid place-items-center">
-  <img
-    className="inline rounded-lg"
-    src="/static/images/Blog/config-mysql-path.png"
-    alt="Config MySQL Path"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog src="/static/images/Blog/config-mysql-path.png" alt="Config MySQL Path" />
 
 Bạn có thể kiểm tra lại cài đặt đúng hay chưa bằng câu lệnh sau:
 
@@ -138,13 +110,10 @@ Bạn có thể kiểm tra lại cài đặt đúng hay chưa bằng câu lệnh
 
 Nếu như mọi thứ ok thì Terminal sẽ bắt chúng ta đăng nhập mật khẩu cho `root user`. Mọi người dùng mật khẩu mình đã điền phía trên điền lại nhé. Nếu như mọi thứ diễn ra tốt đẹp thì Terminal của bạn lúc này sẽ xuất hiện màn hình welcome như ảnh dưới.
 
-<div className="grid place-items-center">
-  <img
-    src="/static/images/Blog/interact-mysql-on-terminal.png"
-    alt="interact MySQL on terminal"
-    width="100%"
-  />
-</div>
+<CenterImageInBlog
+  src="/static/images/Blog/interact-mysql-on-terminal.png"
+  alt="interact MySQL on terminal"
+/>
 
 Lúc này bạn có thể gõ vài câu lệnh rồi nhấn **Enter** mà mình mới xem được trên mạng
 
