@@ -1,0 +1,123 @@
+---
+title: 'Tự học MySQL: Cài đặt môi trường, công cụ cần thiết'
+date: '2022-12-22'
+tags: ['backend', 'mysql']
+draft: false
+# images: ['/static/img/rehype-syntax-highlighting-cover.png']
+summary: Bài viết này dùng để note lại các bước mình đã cài đặt môi trường, công cụ cần thiết để phục vụ việc tự học MySQL. Đây cũng là sự khởi đầu cho việc tìm hiểu thêm lĩnh vực Backend của cá nhân mình.
+# layout: PostSimple
+---
+
+<img
+  className="inline"
+  src="https://images.unsplash.com/photo-1501163268664-3fdf329d019f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=80"
+/>
+
+<TOCInline toc={props.toc} asDisclosure />
+
+## 1. Lời mở đầu
+
+Nhân một buổi chiều trời âm u tối hù, còn 1 tiếng nữa phải lao ra ngoài đường dòng xe hối hả để về nhà thì mình quyết định ngồi học Backend sau nhiều năm ngồi canh CSS, Flexbox, Column, Color,... các kiểu căng mắt.
+
+Đọc đến đây mình nghĩ các bạn sẽ thắc mắc **Ủa gì dzậy trời sắp mưa thì liên quan gì đến học Backend**, lấy ngữ cảnh hoa mỹ vậy thôi chứ mình cũng "me học" lâu nay rồi, để không trì hoãn việc đó nữa nên mình tận dụng một hôm "rảnh rỗi" để làm thôi.
+
+Trước đó mình có tham khảo nhiều nguồn, nhiều người quen rồi cho nên mình quyết định bắt đầu về việc học để biết **Query, Table là gì, how to Drop Database làm sao** cho nên hà há `MySQL - You are the chosen one`.
+
+<center>
+  ![mysql-is-on-my-way](https://media1.giphy.com/media/H4uE6w9G1uK4M/giphy.gif?cid=ecf05e47zsvt6cgw582uqlg228zpu5cgf91mj94l4he2pt2g&rid=giphy.gif&ct=g
+  "MySQL - I'm coming") (MySQL - I'm coming)
+</center>
+
+## 2. Cài đặt MySQL Community Server
+
+Ok chúng ta cùng nhau vào việc thôi. Đầu tiên mình sẽ cài đặt môi trường và các công cụ cần thiết để học nha. Đầu tiên là mình [download MySQL](https://dev.mysql.com/downloads/) nhé!
+
+<CenterImageInBlog
+  src="/static/images/Blog/cai-dat-mysql-community-server.png"
+  alt="Cai dat MySQL community server"
+/>
+
+Sau đó, bạn lựa chọn đúng hệ điều hành, version của hệ điều hành (bước này được trang chủ MySQL làm tự động luôn rồi) đang sử dụng và nhấn Download bản cài phù hợp nhé!
+
+<CenterImageInBlog
+  src="/static/images/Blog/select-install-mysql-verson.png"
+  alt="Lua chon ban cai dat MySQL community server"
+/>
+
+Chúng ta sẽ bị chuyển qua màn hình này và đương nhiên, mình sẽ chọn download thôi chứ Login Sign Up gì tầm này 😆
+
+<CenterImageInBlog
+  src="/static/images/Blog/skip-authen-mysql.png"
+  alt="Skip authentication MySQL"
+/>
+
+Sau khi download thành công, mình chạy file cài tới bước này thì dừng hẳn là 2s vì không biết chọn option nào đây, đến khi mình đọc đoạn mô tả thì tất nhiên rồi mình chọn **option 1** rồi nhấn **Next**
+
+<CenterImageInBlog
+  src="/static/images/Blog/configure-mysql-server.png"
+  alt="Configure MySQL server"
+/>
+
+Bước tiếp theo chương trình sẽ kêu chúng ta nhập mật khẩu cho `root user` (root mình nghĩ là mình á, vì máy mình mà :v), nhập mật khẩu và nhấn **Finish** thôi 🤪
+
+<CenterImageInBlog
+  src="/static/images/Blog/create-password-for-root-user-mysql.png"
+  alt="Create password for root user MySQL server"
+/>
+
+Tada vậy là quá trình cài đặt MySQL đã hoàn tất. Mình hoàn toàn kiểm tra được chương trình chúng ta cài đặt đã thành công hay chưa bằng cách vào `System Setting` -> Sau đó bạn gõ `mysql`. Nếu như Macbook bạn hiển thị MySQL đang Active thì everything is ok rồi á 👏.
+
+<CenterImageInBlog
+  src="/static/images/Blog/check-install-success-mysql.png"
+  alt="Check install MySQL success"
+/>
+
+## 3. "Múa" thử vài câu lệnh MySQL nhé
+
+Trong trường hợp bạn đang ngồi làm việc ở quán cafe, hay văn phòng của bạn có nhiều bạn nữ thì làm gì cho ngầu. So easy mình bật Terminal vào và gõ vài đường quyền chơi. Tuy nhiên, để **tương tác với MySQL trên Terminal** các bạn cần cài đặt PATH cho nó.
+
+<CenterImageInBlog src="/static/images/Blog/path-find-zshrc.png" alt="Path to find zshrc file" />
+
+Máy của mình thì sử dụng file `.zshrc` tuy nhiên nếu bạn dùng file `.bash_profile` thì cũng không thành vấn đề nhé. Bạn có thể mở file đó nhanh bằng cách bật Terminal lên và gõ
+
+```bash
+ open -t .zshrc
+```
+
+Kế tiếp bạn gõ trỏ PATH MySQL vào theo dòng lệnh mình để sẵn bên dưới nhé và bạn **Save file**.
+
+```bash
+ export PATH="$PATH:/usr/local/mysql/bin"
+```
+
+<CenterImageInBlog src="/static/images/Blog/config-mysql-path.png" alt="Config MySQL Path" />
+
+Bạn có thể kiểm tra lại cài đặt đúng hay chưa bằng câu lệnh sau:
+
+```bash
+ mysql -u root -p
+```
+
+Nếu như mọi thứ ok thì Terminal sẽ bắt chúng ta đăng nhập mật khẩu cho `root user`. Mọi người dùng mật khẩu mình đã điền phía trên điền lại nhé. Nếu như mọi thứ diễn ra tốt đẹp thì Terminal của bạn lúc này sẽ xuất hiện màn hình welcome như ảnh dưới.
+
+<CenterImageInBlog
+  src="/static/images/Blog/interact-mysql-on-terminal.png"
+  alt="interact MySQL on terminal"
+/>
+
+Lúc này bạn có thể gõ vài câu lệnh rồi nhấn **Enter** mà mình mới xem được trên mạng
+
+```bash
+ show databases;
+```
+
+Nếu bạn muốn thoát ra, bạn chỉ cần gõ `exit`.
+
+## 4. Cài đặt Database Management
+
+Và công cụ cuối cùng mình cần cài đặt đó chính là **Database Management**, vì là người mới mình cũng chưa biết dùng tool nào ok nên mình sẽ để hai option bên dưới cho mọi người chọn lựa nha, cá nhân mình thì gài cả hai luôn để xem thử dùng cái nào tiện hơn.
+
+- [Table plus](https://tableplus.com/download)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+
+Viết đến đây thì cũng hơn một tiếng rồi, cảm ơn bạn đã xem đến đây và hẹn gặp lại bạn trong bài viết tiếp theo nhé! 🙌
