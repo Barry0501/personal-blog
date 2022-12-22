@@ -64,7 +64,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
         <AppAnalytics />
         <LayoutWrapper>
           <Component {...pageProps} />
-          <Analytics />
+          <Analytics mode={'production'} debug={false} />
         </LayoutWrapper>
       </ThemeProvider>
     </SessionProvider>

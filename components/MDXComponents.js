@@ -2,7 +2,6 @@
 import { useMemo } from 'react'
 import { getMDXComponent } from 'mdx-bundler/client'
 import Image from './Image'
-import CenterImageInBlog from './CenterImageInBlog'
 import CustomLink from './Link'
 import TOCInline from './TOCInline'
 import Pre from './Pre'
@@ -10,7 +9,6 @@ import { BlogNewsletterForm } from './NewsletterForm'
 
 export const MDXComponents = {
   Image,
-  CenterImageInBlog,
   TOCInline,
   a: CustomLink,
   pre: Pre,
