@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.upbase.app",
+    "sha256_cert_fingerprints":
+    ["48:2F:99:1A:B3:84:93:92:1E:67:12:A0:00:6B:54:5D:AD:C6:3C:74:D3:42:76:5F:2F:52:50:0A:3E:91:AC:9C"]
+  }
+}]
